@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Damageable.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Bird.gd" type="Script" id=2]
+
+[node name="Bird" groups=[
+"Bird",
+] instance=ExtResource( 1 )]
+input_pickable = true
+can_sleep = false
+linear_damp = 0.0
+script = ExtResource( 2 )
+survive_points = 2000
+health = 50
+
+[node name="AttachPoint" type="Position2D" parent="." index="2"]
+position = Vector2( -29.7198, 16.7512 )

@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=1]
+
+[sub_resource type="Animation" id=1]
+resource_name = "1_weak"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Texture:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 3.1, 3.6, 3.7, 5, 5.5, 5.9, 7.6, 7.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 1135.07, 12.126, 75.6251, 76.2091 ), Rect2( 1211.66, 9.70075, 75.4707, 78.4896 ), Rect2( 1135.07, 12.126, 75.6251, 76.2091 ), Rect2( 1211.66, 9.70075, 75.4707, 78.4896 ), Rect2( 1135.07, 12.126, 75.6251, 76.2091 ), Rect2( 1210.78, 164.127, 75.7473, 77.8119 ), Rect2( 984.86, 164.76, 76.2092, 75.6252 ), Rect2( 1135.07, 12.126, 75.6251, 76.2091 ), Rect2( 1211.66, 9.70075, 75.4707, 78.4896 ), Rect2( 1135.07, 12.126, 75.6251, 76.2091 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "2_average"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Texture:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.5, 2.6, 4.5, 4.6, 6.5, 6.6, 8.5, 8.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 984.716, 90.3018, 75.282, 74.5651 ), Rect2( 1134.89, 88.3359, 76.2092, 75.9172 ), Rect2( 984.716, 90.3018, 75.282, 74.5651 ), Rect2( 1134.89, 88.3359, 76.2092, 75.9172 ), Rect2( 984.716, 90.3018, 75.282, 74.5651 ), Rect2( 1210.56, 88.3591, 76.5319, 76.2245 ), Rect2( 1059.13, 88.0518, 76.2245, 76.2245 ), Rect2( 1210.56, 88.3591, 76.5319, 76.2245 ), Rect2( 1059.13, 88.0518, 76.2245, 76.2245 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "3_healthy"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Texture:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 3.1, 4.5, 4.6, 6, 6.1, 8.1, 8.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 983, 11.3235, 76, 77.6754 ), Rect2( 1059.26, 238.527, 76.538, 78.2962 ), Rect2( 1060.81, 164.265, 75.0934, 75.0934 ), Rect2( 1059.26, 238.527, 76.538, 78.2962 ), Rect2( 1060.81, 164.265, 75.0934, 75.0934 ), Rect2( 1058.26, 238.61, 77.3523, 78.1885 ), Rect2( 1135.91, 164.195, 74.9236, 75.5921 ), Rect2( 1058.26, 238.61, 77.3523, 78.1885 ), Rect2( 1135.91, 164.195, 74.9236, 75.5921 ) ]
+}
+
+[node name="LittleGreen" instance=ExtResource( 1 )]
+health = 20
+
+[node name="Texture" parent="." index="0"]
+region_rect = Rect2( 983, 11.3235, 76, 77.6754 )
+
+[node name="AnimationPlayer" parent="." index="2"]
+anims/1_weak = SubResource( 1 )
+anims/2_average = SubResource( 2 )
+anims/3_healthy = SubResource( 3 )

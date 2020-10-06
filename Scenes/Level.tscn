@@ -1,0 +1,89 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Assets/gameplay/background_1.jpg" type="Texture" id=1]
+[ext_resource path="res://Scenes/Bird.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Slingshot.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/Level.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/Camera.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/GUI.tscn" type="PackedScene" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 108.343, 728.487 )
+
+[node name="Level" type="Node"]
+script = ExtResource( 4 )
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 1281.21, 719.797 )
+z_index = -10
+texture = ExtResource( 1 )
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2( 1287.98, 1355.52 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ground"]
+position = Vector2( 3.4248, 0 )
+polygon = PoolVector2Array( -1288.16, -103.916, 1274.52, -103.916, 1274.52, 86.4039, -1283.73, 86.4039 )
+
+[node name="EastWall" type="StaticBody2D" parent="."]
+position = Vector2( 2741.36, 698.444 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EastWall"]
+position = Vector2( -71.9207, 27.3983 )
+shape = SubResource( 1 )
+
+[node name="WestWall2" type="StaticBody2D" parent="."]
+position = Vector2( -32.7209, 701.869 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WestWall2"]
+position = Vector2( -71.9207, 27.3983 )
+shape = SubResource( 1 )
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2( 620.454, 1072.48 )
+current = true
+limit_left = 0
+limit_top = 0
+limit_right = 2560
+limit_bottom = 1440
+smoothing_enabled = true
+smoothing_speed = 10.0
+script = ExtResource( 5 )
+CAMERA_SPEED = 5
+
+[node name="Birds" type="Node2D" parent="."]
+position = Vector2( 523.28, 1186.37 )
+
+[node name="Bird" parent="Birds" instance=ExtResource( 2 )]
+position = Vector2( 1.67017, 11.6913 )
+
+[node name="Bird2" parent="Birds" instance=ExtResource( 2 )]
+position = Vector2( -86.8495, 18.3718 )
+
+[node name="Bird3" parent="Birds" instance=ExtResource( 2 )]
+position = Vector2( -180.38, 15.0316 )
+
+[node name="Enemies" type="Node2D" parent="."]
+position = Vector2( 2161.03, 1170.39 )
+
+[node name="Enemy" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( -2.27222, 38.6252 )
+
+[node name="Blocks" type="Node2D" parent="."]
+position = Vector2( 2284.85, 1162.4 )
+
+[node name="Slingshot" parent="." instance=ExtResource( 3 )]
+position = Vector2( 638.863, 1128.48 )
+
+[node name="GUI" parent="." instance=ExtResource( 8 )]
+[connection signal="end_game" from="GUI" to="." method="_on_GUI_end_game"]
